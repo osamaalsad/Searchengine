@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<link href="{% static 'css/main.css' %}" rel="stylesheet" />
+<nav class="navbar navbar-inverse" style="position:relative; top:-20px">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><span style="font-family: 'Anton', sans-serif; font-family: 'Pacifico', cursive;">D</span><span style="color:#63c76a">eebly</span></h1></a>
+    </div>
+    <ul class="nav navbar-nav">
+
+      <li class="active"><a href="{% url 'feedback_page' %}" style="left:1400px; position:relative;">Feedback</a></li>
+
+    </ul>
+  </div>
+</nav>
+<div class="s003" style="background-color:#144765;">
+    <h1 style="position:relative; top:-130px; left:420px; text-shadow: 5px 10px 40px white;"><a href="{% url 'home' %}"><span style="font-family: 'Anton', sans-serif; font-family: 'Pacifico', cursive;  font-size:70px;">D</span><span style="font-size:40px; color:#63c76a">eebly</span></a></h1>
+    <form action="{% url 'search_results' %}" method="get"  style="box-shadow: 5px 10px 30px black; position:relative;left:-60px; top:-20px">
+        <div class="inner-form">
+            <div class="input-field first-wrap">
+                <div class="input-select">
+                    {% csrf_token %}
+                    <select data-trigger="" name="drop1" >
+                        <option placeholder="">Category</option>
+                        {% for i in Category %}
+                            <option value= "{{i.ID}}">{{ i.Name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="input-field second-wrap">
+                <input id="search" name = 'q' type="text" placeholder="Enter Keywords?" />
+            </div>
+            <div class="input-field third-wrap" name="click">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn-search" type="button">
+                    <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="{% static 'js/extention/choices.js' %}" type="ed89b183bca3eb401c1b2125-text/javascript"></script>
+<script type="ed89b183bca3eb401c1b2125-text/javascript">
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+
+    </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="ed89b183bca3eb401c1b2125-text/javascript"></script>
+<script type="ed89b183bca3eb401c1b2125-text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="ed89b183bca3eb401c1b2125-|49" defer=""></script>
+
+{% endblock %}
